@@ -1,11 +1,11 @@
-# Setting up a VPN between CloudIL VPC and AWS VPC
+# Setting up a VPN between Nebius VPC and AWS VPC
 
 ## Overview and target scenario
-If you need to deploy a Site-to-Site VPN connection between CloudIL and AWS, you can use this example and module to set it up.
+If you need to deploy a Site-to-Site VPN connection between Nebius and AWS, you can use this example and module to set it up.
 
 
 <p align="center">
-    <img src="vpn.png" alt="VPN tunnel between CloudIL and AWS diagram" width="800"/>
+    <img src="vpn-nebius.png" alt="VPN tunnel between Nebius and AWS diagram" width="800"/>
 </p>
 
 
@@ -13,7 +13,7 @@ Let’s look at an example to see how it works.
 
 ## Prerequisites
 
-- Accounts in AWS and CloudIL
+- Accounts in AWS and Nebius
 - Bash
 - Terraform 1.1.5
 - jq
@@ -21,9 +21,9 @@ Let’s look at an example to see how it works.
 Configure the AWS site:
 - Configure the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
 
-Configure the CloudIL site:
-- Configure [CLI](https://cloudil.co.il/docs/cli/quickstart) 
-- Export CloudIL Credentials to the Terraform Provider
+Configure the Nebius site:
+- Configure [CLI](https://nebius.com/il/docs/cli/quickstart) 
+- Export Nebius Credentials to the Terraform Provider
 
 ```bash
 yc config profile activate default
@@ -55,7 +55,7 @@ Afterwards, you should be able to connect to the user’s virtual machines with 
 You can see how Terraform will checking IPSEC VPN tunnel status and performing end-to-end connectivity tests.
 
 
-### Ping from CloudIL to AWS
+### Ping from Nebius to AWS
 
 You can check end-to-end connectivity by yourself:
 ```bash
