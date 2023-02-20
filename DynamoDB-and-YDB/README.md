@@ -32,11 +32,11 @@ export AWS_SECRET_ACCESS_KEY=#your secret access key here
 
 ## Set up YDB
 
-To create a serverless database, see [Creating a database](https://cloudil.co.il/docs/ydb/quickstart/create-db). On the **Overview** tab, find **Document API endpoint**.
+To create a serverless database, see [Creating a database](https://nebius.com/il/docs/ydb/quickstart/create-db). On the **Overview** tab, find **Document API endpoint**.
 
-Create a [service account](https://cloudil.co.il/docs/iam/operations/sa/create) and grant the `ydb.admin` role to the account.
+Create a [service account](https://nebius.com/il/docs/iam/operations/sa/create) and grant the `ydb.admin` role to the account.
 
-Create [static access keys](https://cloudil.co.il/docs/iam/operations/sa/create-access-key) for the account. Save the key ID and secret key.
+Create [static access keys](https://nebius.com/il/docs/iam/operations/sa/create-access-key) for the account. Save the key ID and secret key.
 
 Prepare the environment:
 ```shell

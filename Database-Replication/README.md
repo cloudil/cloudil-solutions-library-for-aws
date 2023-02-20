@@ -1,21 +1,21 @@
-# Data replication between AWS RDS for PostgreSQL and CloudIL MDB for PostgreSQL by CloudIL Data Transfer
+# Data replication between AWS RDS for PostgreSQL and Nebius MDB for PostgreSQL by Nebius Data Transfer
 
 ## Overview and target scenario
-We’ve noticed that more and more customers are looking for approaches to help them build hybrid solutions. While the reasons for this include a need to comply with local regulations and meet latency requirements, others use AWS for primary deployment and consolidating data. To help our customers, we tested data replication (sync) between `AWS RDS for PostgreSQL` (version 14) and `CloudIL Managed Service for PostgreSQL` (version 14) and prepared detailed step-by-step instructions for the scenario. For the data transfer is used `CloudIL Data Transfer` service. The deployment architecture is illustrated below:
+We’ve noticed that more and more customers are looking for approaches to help them build hybrid solutions. While the reasons for this include a need to comply with local regulations and meet latency requirements, others use AWS for primary deployment and consolidating data. To help our customers, we tested data replication (sync) between `AWS RDS for PostgreSQL` (version 14) and `Nebius Managed Service for PostgreSQL` (version 14) and prepared detailed step-by-step instructions for the scenario. For the data transfer is used `Nebius Data Transfer` service. The deployment architecture is illustrated below:
 
 <p align="center">
-    <img src="db-replication.png" alt="DB Replication with CloudIL Data Transfer diagram" width="600"/>
+    <img src="db-replication-nebius.png" alt="DB Replication with Nebius Data Transfer diagram" width="600"/>
 </p>
 
 ## Documentation
 * [Amazon RDS for PostgreSQL](https://aws.amazon.com/rds/postgresql/)
-* [CloudIL Managed Service for PostgreSQL](https://cloudil.co.il/docs/managed-postgresql/)
-* [CloudIL Data Transfer](https://cloudil.co.il/docs/data-transfer/)
+* [Nebius Managed Service for PostgreSQL](https://nebius.com/il/docs/managed-postgresql/)
+* [Nebius Data Transfer](https://nebius.com/il/docs/data-transfer/)
 
 
 ## Prerequisites
 
-- Accounts in AWS and CloudIL
+- Accounts in AWS and Nebius
 - Bash
 - Terraform 1.1.5
 - jq
@@ -24,12 +24,12 @@ We’ve noticed that more and more customers are looking for approaches to help 
 To configure AWS site:
 - Configure [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
 
-To configure CloudIL site:
-- Configure [CLI](https://cloudil.co.il/docs/cli/quickstart) 
-- Export CloudIL Credentials to the Terraform Provider
+To configure Nebius site:
+- Configure [CLI](https://nebius.com/il/docs/cli/quickstart) 
+- Export Nebius Credentials to the Terraform Provider
 
 ```bash
-# CloudIL Environment
+# Nebius Environment
 yc config profile activate default
 export CIL_CLOUD_ID=$(yc config get cloud-id)
 export CIL_FOLDER_ID=$(yc config get folder-id)
@@ -45,7 +45,7 @@ export AWS_PROFILE=aws
 
 ### Initiate example playbook
 
-This playbook will create PostgreSQL instances on AWS and CloudIL sides.
+This playbook will create PostgreSQL instances on AWS and Nebius sides.
 
 Please wait for about 10 minutes when tasks have been finished.
 ```bash
@@ -72,14 +72,14 @@ AWS_DB_HOST=$(terraform output -raw aws_db_host_fqdn)
 psql "postgresql://$DB_USER:$DB_PASS@$AWS_DB_HOST:$DB_PORT/$DB_NAME" -c "CREATE TABLE phone (phone VARCHAR(32) PRIMARY KEY, firstname VARCHAR(32), lastname VARCHAR(32)); INSERT INTO phone (phone, firstname, lastname) VALUES('12313213','Jack','Jackinson');"
 ```
 
-### Create CloudIL Data Transfer for the data replication
-Create the CloudIL `Data Transfer` for replicate data from the AWS RDS to the CloudIL MDB.
+### Create Nebius Data Transfer for the data replication
+Create the Nebius `Data Transfer` for replicate data from the AWS RDS to the Nebius MDB.
 ```bash
 terraform apply -var=dt_enable=true
 ```
 Please wait about 10 minutes when tasks have been finished.
 
-### Check data replication results on CloudIL side
+### Check data replication results on Nebius side
 ```bash
 psql "postgresql://$DB_USER:$DB_PASS@$CIL_DB_HOST:$DB_PORT/$DB_NAME" -c "SELECT * FROM phone;"
 ```
@@ -90,7 +90,7 @@ psql "postgresql://$DB_USER:$DB_PASS@$AWS_DB_HOST:$DB_PORT/$DB_NAME" -c "INSERT 
 ```
 Data transfer can take a few minutes!
 
-### Check data replication results again on CloudIL side
+### Check data replication results again on Nebius side
 ```bash
 psql "postgresql://$DB_USER:$DB_PASS@$CIL_DB_HOST:$DB_PORT/$DB_NAME" -c "SELECT * FROM phone;"
 ```

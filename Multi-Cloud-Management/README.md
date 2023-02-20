@@ -12,7 +12,7 @@ Configuring your multi-cloud environment for Systems Manager enables you to do t
 
 
 # Configuration 
-To start managing instances deployed on `CloudIL`, you first need to provision roles and make activation sessions with keys. To facilitate this, you can find the [initial_setup.sh](./initial_setup.sh) script, which will provision an IAM role to the SSM agent and grant the required permissions. 
+To start managing instances deployed on `Nebius`, you first need to provision roles and make activation sessions with keys. To facilitate this, you can find the [initial_setup.sh](./initial_setup.sh) script, which will provision an IAM role to the SSM agent and grant the required permissions. 
 
 It will also generate an Activation Key and ID that should be used on the managed instances during configuration.
 

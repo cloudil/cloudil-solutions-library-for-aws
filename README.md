@@ -1,12 +1,12 @@
-# CloudIL Solutions Library for AWS
+# Nebius Solutions Library for AWS
 
-This repository contains a number of building blocks that will help developers and DevOps engineers build multi-cloud solutions between clouds. We at CloudIL tried to identify the most common tasks that developers encounter while architecting or developing solutions, described the best practices, and provided examples of automation using Terraform for building blocks. The repository contains descriptions of common scenarios and consists of the following modules:
+This repository contains a number of building blocks that will help developers and DevOps engineers build multi-cloud solutions between clouds. We at Nebius tried to identify the most common tasks that developers encounter while architecting or developing solutions, described the best practices, and provided examples of automation using Terraform for building blocks. The repository contains descriptions of common scenarios and consists of the following modules:
 
-* [Example of VPN connection between CloudIL and AWS clouds](./VPN/)
+* [Example of VPN connection between Nebius and AWS clouds](./VPN/)
 * [Example of database replication between managed PostgreSQL and AWS RDS using logical replication](./Database-Replication/)
-* [Guide for writing an application on CloudIL that is compatible with AWS DynamoDB](./DynamoDB-and-YDB/)
+* [Guide for writing an application on Nebius that is compatible with AWS DynamoDB](./DynamoDB-and-YDB/)
 * [Example of Kubernetes deployment between clouds and traffic routing using a global DNS](./Kubernetes-and-Route53/)
-* [Example and automation for managing instances on CloudIL using AWS Systems Manager](./Multi-Cloud-Management)
+* [Example and automation for managing instances on Nebius using AWS Systems Manager](./Multi-Cloud-Management)
 
 We are always open to new ideas for adding blocks to the repository. 
 If you think we missed something, please contact us and describe your scenario in the GitHub repository under Issues.
@@ -30,17 +30,17 @@ users and compliant with local private data laws and regulations.
 Routing is established by a global DNS via [Amazon Route 53](https://aws.amazon.com/route53/), which can route users based on their location or latency.
 
 <p align="center">
-    <img src="images/global-routing.png" alt="Global Routing diagram" width="600"/>
+    <img src="images/global-routing-nebius.png" alt="Global Routing diagram" width="600"/>
 </p>
 
-An example of setting up Route 53 between CloudIL and AWS can be found [here](./Kubernetes-and-Route53/).
+An example of setting up Route 53 between Nebius and AWS can be found [here](./Kubernetes-and-Route53/).
 
 
 ### **Website with Dependent or Centralized databases** <a id="ch2"/></a>
 This is a more advanced scenario that requires you to collect data in a centralized location for further analysis or analytics.
 
 <p align="center">
-    <img src="images/centralized-db.png" alt="Web-site with centralized DB" width="600"/>
+    <img src="images/centralized-db-nebius.png" alt="Web-site with centralized DB" width="600"/>
 </p>
 
 Examples of such type architecture:
@@ -57,7 +57,7 @@ You can enhance this architecture to establish a federation of Kubernetes resour
 [KubeFed](https://github.com/kubernetes-sigs/kubefed) or [Istio](https://istio.io/).
 
 <p align="center">
-    <img src="images/multi-cloud.png" alt="Distributed Kubernetes app" width="600"/>
+    <img src="images/multi-cloud-nebius.png" alt="Distributed Kubernetes app" width="600"/>
 </p>
 
 Examples of such type architecture:
@@ -80,9 +80,9 @@ Management tasks can include:
 * etc
 
 <p align="center">
-    <img src="images/mgmt-monitoring.png" alt="Fleet management diagram" width="600"/>
+    <img src="images/mgmt-monitoring-nebius.png" alt="Fleet management diagram" width="600"/>
 </p>
 
 Examples of such type architecture:
-* [Managing instances on CloudIL using AWS Systems Manager](./Multi-Cloud-Management/)
+* [Managing instances on Nebius using AWS Systems Manager](./Multi-Cloud-Management/)
 * [Establishing a VPN connection for more secure connectivity](./VPN/)

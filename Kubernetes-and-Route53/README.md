@@ -1,17 +1,17 @@
 
 ## Overview and target scenario 
-This scenario specifically targets customers who have chosen Kubernetes as their base PaaS technology. These customers may have users in regions where AWS doesn't have data centers. To solve this issue, users can deploy a Kubernetes satellite cluster on `CloudIL` and add services from their K8S clusters to the Global Service Management system.
+This scenario specifically targets customers who have chosen Kubernetes as their base PaaS technology. These customers may have users in regions where AWS doesn't have data centers. To solve this issue, users can deploy a Kubernetes satellite cluster on `Nebius` and add services from their K8S clusters to the Global Service Management system.
 
-For example, in this solution, you can have a main application installed on AWS and a satellite application installed on CloudIL. Both applications use Route 53 with regional forwarding, which forwards requests from the US to an AWS site and Local requests to a CloudIL site.
+For example, in this solution, you can have a main application installed on AWS and a satellite application installed on Nebius. Both applications use Route 53 with regional forwarding, which forwards requests from the US to an AWS site and Local requests to a Nebius site.
 
 <p align="center">
-    <img src="kube-route53.png" alt="Kubernetes clusters at CloudIL and AWS diagram" width="800"/>
+    <img src="kube-route53-nebius.png" alt="Kubernetes clusters at Nebius and AWS diagram" width="800"/>
 </p>
 
 
 ## Prerequisites
 
-- Accounts in AWS and CloudIL
+- Accounts in AWS and Nebius
 - Bash
 - Terraform 1.2.8
 - curl
@@ -20,9 +20,9 @@ For example, in this solution, you can have a main application installed on AWS 
 To configure the AWS site:
 - Configure the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
 
-To configure the CloudIL site:
-- Configure [CLI](https://cloudil.co.il/docs/cli/quickstart) 
-- Export CloudIL Credentials to the Terraform Provider
+To configure the Nebius site:
+- Configure [CLI](https://nebius.com/il/docs/cli/quickstart) 
+- Export Nebius Credentials to the Terraform Provider
 
 ```bash
 yc config profile activate default
@@ -68,7 +68,7 @@ Check if the Route 53 Global DNS is working:
 
 1) Go to the **AWS Console**.
 2) Choose **Route 53 Service**.
-3) Choose **aws-cloudil-example.com**. (your public DNS name)
+3) Choose **aws-nebius-example.com**. (your public DNS name)
 4) Click **Test Connection**.
 
 Test the WWW record from different resolver addresses:
